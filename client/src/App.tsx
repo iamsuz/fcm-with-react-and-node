@@ -1,35 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import { useState } from "react";
+import { Button, Toast } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./firebase.js";
 
 function App() {
-  const [count, setCount] = useState(0)
+	const [show, setShow] = useState(false);
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+	return (
+		<div className="App">
+			<Toast
+				onClose={() => setShow(false)}
+				show={show}
+				delay={3000}
+				autohide
+				animation
+				style={{
+					position: "absolute",
+					top: 20,
+					right: 20,
+				}}
+			>
+				<Toast.Header>
+					<img src="holder.js/20x20?text=%20" className="rounded mr-2" alt="" />
+					<strong className="mr-auto">Notification</strong>
+					<small>5 mins ago</small>
+				</Toast.Header>
+				<Toast.Body>This will give us the Notification details</Toast.Body>
+			</Toast>
+			<header className="App-header">
+				<Button onClick={() => setShow(true)}>Show Toast</Button>
+			</header>
+		</div>
+	);
 }
 
-export default App
+export default App;
