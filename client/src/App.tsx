@@ -2,11 +2,20 @@ import "./App.css";
 import { useState } from "react";
 import { Button, Toast } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./firebase.js";
+
+import { getTokens, onMessageListener } from "./firebase.js";
 
 function App() {
 	const [show, setShow] = useState(false);
+	const [isTokenFound, setTokenFound] = useState(false);
+	getTokens(setTokenFound);
 
+	onMessageListener()
+		.then((payload) => {
+			console.log(payload);
+			setShow(true);
+		})
+		.catch((err) => console.error(err));
 	return (
 		<div className="App">
 			<Toast
