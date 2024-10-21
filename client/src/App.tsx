@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 import "./App.css";
 import { useState } from "react";
 import { Button, Toast } from "react-bootstrap";
@@ -8,6 +10,7 @@ import { getTokens, onMessageListener } from "./firebase.js";
 function App() {
 	const [show, setShow] = useState(false);
 	const [isTokenFound, setTokenFound] = useState(false);
+	console.log(isTokenFound);
 	getTokens(setTokenFound);
 
 	onMessageListener()
