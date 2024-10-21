@@ -13,14 +13,13 @@ const firebaseConfig = {
 	projectId: "fcm-token-11c3d",
 	storageBucket: "fcm-token-11c3d.firebasestorage.app",
 	messagingSenderId: "381612045112",
-	appId: "1:381612045112:web:952a02269fa2826e22c7cd",
-	measurementId: "G-97CGY5BD6Q",
+	appId: "1:381612045112:web:007176834a1100e122c7cd",
+	measurementId: "G-QL7P4DBWDJ",
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
-
 const messaging = getMessaging(app);
 
 export const getTokens = async (setTokenFound) => {
@@ -49,11 +48,11 @@ export const getTokens = async (setTokenFound) => {
 		});
 };
 
-onMessage(messaging, (payload) => {
-	console.log("payload", payload);
-	resolve(payload);
-});
-
 export const onMessageListener = () => {
-	return new Promise((resolve, reject) => {});
+	return new Promise((resolve) => {
+		onMessage(messaging, (payload) => {
+			console.log("payload", payload);
+			resolve(payload);
+		});
+	});
 };
