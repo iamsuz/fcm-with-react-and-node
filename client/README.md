@@ -1,54 +1,77 @@
-# React + TypeScript + Vite
+# Firebase Cloud Messaging (FCM) Integration with React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project demonstrates how to integrate Firebase Cloud Messaging (FCM) with a React app using **Vite** and **TypeScript**. You can use this template to set up notifications in your React project.
 
-Currently, two official plugins are available:
+## Prerequisites
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Node.js (v20.x or higher)
+- A Firebase project (make sure to enable Firebase Cloud Messaging)
 
-## Expanding the ESLint configuration
+## Project Setup
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 1. Clone the repository:
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+git clone https://github.com/iamsuz/fcm-with-react-and-node.git
+cd client
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Install dependencies:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+npm install
+```
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+### 3. Initialize Firebase:
+
+- Go to Firebase Console.
+- Create a new Firebase project (or use an existing one).
+- Enable Firebase Cloud Messaging and obtain your VAPID Key from the Cloud Messaging settings.
+
+### 4. Update Firebase Configuration:
+
+- In your firebase.js file, replace the placeholders for the Firebase configuration with the values from your Firebase project.
+
+```Javascript
+const firebaseConfig = {
+    apiKey: "<YOUR_API_KEY>",
+    authDomain: "<YOUR_AUTH_DOMAIN>",
+    projectId: "<YOUR_PROJECT_ID>",
+    storageBucket: "<YOUR_STORAGE_BUCKET>",
+    messagingSenderId: "<YOUR_MESSAGING_SENDER_ID>",
+    appId: "<YOUR_APP_ID>",
+    measurementId: "<YOUR_MEASUREMENT_ID>"
+};
+```
+
+### 5. Enable PWA Support:
+
+In order to receive notifications on the web, your app must be a Progressive Web App (PWA). You can enable PWA support with Vite:
+
+```bash
+npm install vite-plugin-pwa --save-dev
+```
+
+### 6. Start the Development Server:
+
+```bash
+npm run dev
+```
+
+This will start the application at http://localhost:5173.
+
+### 7. Test Notifications:
+
+- Make sure the browser is asking for permission to receive notifications. Check the console for the device token once permissions are granted.
+- You can use Firebase Console to send a test notification to your app.
+
+### 8. Deployment:
+
+For production, you'll need to host the app using HTTPS to enable Firebase messaging. You can use Firebase Hosting to deploy your app:
+
+```bash
+npm install -g firebase-tools
+firebase login
+firebase init
+firebase deploy
 ```
