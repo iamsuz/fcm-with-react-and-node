@@ -8,15 +8,14 @@ import { getMessaging, getToken, onMessage } from "firebase/messaging";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-	apiKey: "AIzaSyDKfwh2TqIiUiWTP4FK1S_rRgWRJdHVzWo",
-	authDomain: "fcm-token-11c3d.firebaseapp.com",
-	projectId: "fcm-token-11c3d",
-	storageBucket: "fcm-token-11c3d.firebasestorage.app",
-	messagingSenderId: "381612045112",
-	appId: "1:381612045112:web:007176834a1100e122c7cd",
-	measurementId: "G-QL7P4DBWDJ",
+	apiKey: "<YOUR_API_KEY>",
+	authDomain: "<YOUR_AUTH_DOMAIN>",
+	projectId: "<YOUR_PROJECT_ID>",
+	storageBucket: "<YOUR_STORAGE_BUCKET>",
+	messagingSenderId: "<YOUR_MESSAGING_SENDER_ID>",
+	appId: "<YOUR_APP_ID>",
+	measurementId: "<YOUR_MEASUREMENT_ID>",
 };
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
