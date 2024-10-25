@@ -9,28 +9,28 @@ This project demonstrates how to integrate Firebase Cloud Messaging (FCM) with a
 
 ## Project Setup
 
-### 1. Clone the repository:
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/iamsuz/fcm-with-react-and-node.git
 cd client
 ```
 
-### 2. Install dependencies:
+### 2. Install dependencies
 
 ```bash
 npm install
 ```
 
-### 3. Initialize Firebase:
+### 3. Initialize Firebase
 
 - Go to Firebase Console.
 - Create a new Firebase project (or use an existing one).
 - Enable Firebase Cloud Messaging and obtain your VAPID Key from the Cloud Messaging settings.
 
-### 4. Update Firebase Configuration:
+### 4. Update Firebase Configuration
 
-- In your firebase.js file, replace the placeholders for the Firebase configuration with the values from your Firebase project.
+- In your `src/firebase.js` file, replace the placeholders for the Firebase configuration with the values from your Firebase project.
 
 ```Javascript
 const firebaseConfig = {
@@ -44,15 +44,7 @@ const firebaseConfig = {
 };
 ```
 
-### 5. Enable PWA Support:
-
-In order to receive notifications on the web, your app must be a Progressive Web App (PWA). You can enable PWA support with Vite:
-
-```bash
-npm install vite-plugin-pwa --save-dev
-```
-
-### 6. Start the Development Server:
+### 5. Start the Development Server
 
 ```bash
 npm run dev
@@ -60,12 +52,12 @@ npm run dev
 
 This will start the application at http://localhost:5173.
 
-### 7. Test Notifications:
+### 6. Test Notifications
 
 - Make sure the browser is asking for permission to receive notifications. Check the console for the device token once permissions are granted.
 - You can use Firebase Console to send a test notification to your app.
 
-### 8. Deployment:
+### 7. Deployment
 
 For production, you'll need to host the app using HTTPS to enable Firebase messaging. You can use Firebase Hosting to deploy your app:
 
