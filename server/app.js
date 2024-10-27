@@ -1,14 +1,7 @@
 const http = require("http");
 const express = require("express");
-const queue = require("./services/queue");
 const app = express();
-
-const admin = require("firebase-admin");
-const serviceAccount = require("./config/google-cloud-service-account.json");
-
-admin.initializeApp({
-	credential: admin.credential.cert(serviceAccount),
-});
+const userRoutes = require("./routers/user.routes");
 
 const router = express.Router();
 
@@ -17,6 +10,7 @@ router.get("/", (req, res) => {
 });
 
 app.use(router);
+app.use("/users", userRoutes);
 
 const server = http.createServer(app);
 
